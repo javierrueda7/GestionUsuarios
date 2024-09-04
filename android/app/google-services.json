@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "666071215022",
+    "project_id": "powerbi-cu",
+    "storage_bucket": "powerbi-cu.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:666071215022:android:4a6956aec0fd54d17e763f",
+        "android_client_info": {
+          "package_name": "com.powerbi.controlusuario"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAxoVJELZOwi_B9M9_8KuvWEYgtPOR0JsA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
