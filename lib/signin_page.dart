@@ -56,7 +56,14 @@ class _SignInPageState extends State<SignInPage> {
                       children: <Widget>[
                         const Text('GESTIÓN DE USUARIOS', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),
                         const SizedBox(
-                          height: 20,
+                          height: 10,
+                        ),
+                        Image.asset(
+                          'assets/images/imagen.jpg',
+                          height: 250,
+                        ),
+                        const SizedBox(
+                          height: 10,
                         ),
                         Container(
                           constraints: const BoxConstraints(maxWidth: 800),
