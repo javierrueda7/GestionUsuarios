@@ -47,24 +47,27 @@ class _SignInPageState extends State<SignInPage> {
             constraints: const BoxConstraints(maxWidth: 1200),
             child: SingleChildScrollView(
               child: Column(
-                children: [                  
-                  const ContactInfoCard(),
+                children: [        
                   Padding(
-                    padding: EdgeInsets.fromLTRB(
-                        20, MediaQuery.of(context).size.height * 0.1, 20, 0),
+                    padding: const EdgeInsets.fromLTRB(
+                        20, 40, 20, 0),
                     child: Column(
                       children: <Widget>[
+                        Image.asset(
+                          'assets/images/imagen.jpg',
+                          height: 200,
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        const ContactInfoCard(),
+                        const SizedBox(
+                          height: 10,
+                        ),
                         const Text('GESTIÓN DE USUARIOS', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),
                         const SizedBox(
                           height: 10,
-                        ),
-                        Image.asset(
-                          'assets/images/imagen.jpg',
-                          height: 250,
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
+                        ),                        
                         Container(
                           constraints: const BoxConstraints(maxWidth: 800),
                           child: buildEmailField('EMAIL', _emailTextController, false)

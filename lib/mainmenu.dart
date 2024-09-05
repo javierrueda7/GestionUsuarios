@@ -68,7 +68,11 @@ class _MainMenuState extends State<MainMenu> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [            
             const ContactInfoCard(),      
-            const SizedBox(height: 40),
+            const SizedBox(height: 10),
+            const Text('MODELOS DISPONIBLES', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),
+            const SizedBox(
+              height: 10,
+            ),
             Visibility(
               visible: role != 'USUARIO',
               child: Column(
@@ -91,7 +95,7 @@ class _MainMenuState extends State<MainMenu> {
                         MaterialPageRoute(builder: (context) => const ListDashboardsScreen()),
                       ).then((_){_reloadList();});
                     },
-                    child: const Text('ADMINISTRAR DASHBOARDS'),
+                    child: const Text('ADMINISTRAR MODELOS'),
                   ),
                   const SizedBox(height: 20),
                 ],
@@ -124,7 +128,7 @@ class UserDashboardsScreen extends StatelessWidget {
         } else if (snapshot.hasError) {
           return Center(child: Text('Error: ${snapshot.error}'));
         } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-          return const Center(child: Text('No dashboards found for this user.'));
+          return const Center(child: Text('No tiene modelos disponibles.'));
         }
 
         final dashboards = snapshot.data!;

@@ -26,21 +26,21 @@ class ContactInfoCard extends StatelessWidget {
             Text(
               'Edilberto Rueda',
               style: TextStyle(
-                fontSize: 18,
+                fontSize: 20,
                 color: Colors.black87,
               ),
             ),
             Text(
               'jerueda@yahoo.com',
               style: TextStyle(
-                fontSize: 12,
+                fontSize: 16,
                 color: Colors.black54,
               ),
             ),
             Text(
               '3156285506',
               style: TextStyle(
-                fontSize: 12,
+                fontSize: 16,
                 color: Colors.black54,
               ),
             ),

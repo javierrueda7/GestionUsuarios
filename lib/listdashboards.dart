@@ -20,7 +20,7 @@ class _ListDashboardsScreenState extends State<ListDashboardsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Center(child: Text('ADMINISTRACIÓN DE DASHBOARDS')),
+        title: const Center(child: Text('ADMINISTRACIÓN DE MODELOS')),
       ),
       body: Padding(
         padding: const EdgeInsets.fromLTRB(350, 50, 350, 50),
@@ -151,7 +151,7 @@ class _UserSelectionDialogState extends State<UserSelectionDialog> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: Text('SELECCIONAR USUARIOS HABILITADOS PARA EL DASHBOARD ${widget.dashboardName}'),
+      title: Text('SELECCIONAR USUARIOS HABILITADOS PARA EL MODELO ${widget.dashboardName}'),
       content: SizedBox(
         width: 600,
         height: 400,
@@ -297,7 +297,7 @@ class _AddEditParamState extends State<AddEditParam> {
     final List<String> estados = ['ACTIVO', 'INACTIVO'];
 
     return AlertDialog(
-      title: Center(child: Text(isEditing ? 'EDITAR DASHBOARD' : 'AGREGAR DASHBOARD')),
+      title: Center(child: Text(isEditing ? 'EDITAR MODELO' : 'AGREGAR MODELO')),
       content: SizedBox(
         height: 260,
         child: Padding(
