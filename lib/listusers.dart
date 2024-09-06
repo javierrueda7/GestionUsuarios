@@ -199,7 +199,7 @@ class _DashboardSelectionDialogState extends State<DashboardSelectionDialog> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: Text('SELECCIONAR DASHBOARDS PARA ${widget.userName}'),
+      title: Text('SELECCIONAR MODELOS PARA ${widget.userName}'),
       content: SizedBox(
         width: 600,
         height: 400,
@@ -292,7 +292,7 @@ class _DashboardSelectionDialogState extends State<DashboardSelectionDialog> {
 
       // Show a success message
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Dashboards actualizados satisfactoriamente.')),
+        const SnackBar(content: Text('Modelos actualizados satisfactoriamente.')),
       );
     }
 

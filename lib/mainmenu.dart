@@ -2,8 +2,8 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:powerbicu/dashboardpage.dart';
 import 'package:powerbicu/listdashboards.dart';
-import 'dart:html' as html;
 import 'package:powerbicu/listusers.dart';
 import 'package:powerbicu/utils/firebase_services.dart';
 import 'package:powerbicu/utils/forms_widgets.dart';
@@ -142,9 +142,14 @@ class UserDashboardsScreen extends StatelessWidget {
               title: Text(dashboard['data']['name'] ?? 'No Name'),
               trailing: const Icon(Icons.remove_red_eye_outlined),
               onTap: () {
-                html.window.open(
-                  dashboard['data']['link'],
-                  '_blank',
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => DashboardPage(
+                      link: dashboard['data']['link'],
+                      name: dashboard['data']['name'] // Pass the link dynamically
+                    ),
+                  ),
                 );
               },
             );
