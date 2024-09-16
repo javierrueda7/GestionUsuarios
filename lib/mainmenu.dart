@@ -113,15 +113,36 @@ class _MainMenuState extends State<MainMenu> {
   }
 }
 
-class UserDashboardsScreen extends StatelessWidget {
+class UserDashboardsScreen extends StatefulWidget {
   final String uid;
 
   const UserDashboardsScreen({super.key, required this.uid});
 
   @override
+  _UserDashboardsScreenState createState() => _UserDashboardsScreenState();
+}
+
+class _UserDashboardsScreenState extends State<UserDashboardsScreen> {
+  late Future<List<Map<String, dynamic>>> dashboardsFuture;
+
+  @override
+  void initState() {
+    super.initState();
+    // Initially fetch the dashboards
+    dashboardsFuture = getDashboardsByUserId(widget.uid);
+  }
+
+  void _refreshDashboards() {
+    // Refresh the list of dashboards
+    setState(() {
+      dashboardsFuture = getDashboardsByUserId(widget.uid);
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return FutureBuilder<List<Map<String, dynamic>>>(
-      future: getDashboardsByUserId(uid),
+      future: dashboardsFuture,
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Center(child: CircularProgressIndicator());
@@ -147,15 +168,18 @@ class UserDashboardsScreen extends StatelessWidget {
                   MaterialPageRoute(
                     builder: (context) => DashboardPage(
                       link: dashboard['data']['link'],
-                      name: dashboard['data']['name'] // Pass the link dynamically
+                      name: dashboard['data']['name'],
                     ),
                   ),
-                );
+                ).then((_) {
+                  // Refresh the dashboards list when coming back
+                  _refreshDashboards();
+                });
               },
             );
           },
         );
       },
-    );    
+    );
   }
 }

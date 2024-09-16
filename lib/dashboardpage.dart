@@ -1,8 +1,7 @@
-// ignore_for_file: library_private_types_in_public_api, avoid_web_libraries_in_flutter
-
+// ignore: avoid_web_libraries_in_flutter
 import 'dart:html' as html;
 import 'package:flutter/material.dart';
-import 'dart:ui' as ui; // Use for web platform view
+import 'dart:ui' as ui;
 
 class DashboardPage extends StatefulWidget {
   final String link;
@@ -11,17 +10,22 @@ class DashboardPage extends StatefulWidget {
   const DashboardPage({required this.link, required this.name, super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _DashboardPageState createState() => _DashboardPageState();
 }
 
 class _DashboardPageState extends State<DashboardPage> {
+  late String uniqueViewType;
+
   @override
   void initState() {
     super.initState();
+    // Generate a unique view type for each dashboard link
+    uniqueViewType = 'iframeElement-${widget.link.hashCode}';
 
-    // Register an iframe element for displaying the dashboard link
+    // Register the iframe view with a unique view type
     ui.platformViewRegistry.registerViewFactory(
-      'iframeElement',
+      uniqueViewType,
       (int viewId) => html.IFrameElement()
         ..src = widget.link
         ..style.border = 'none' // Remove border
@@ -34,11 +38,11 @@ class _DashboardPageState extends State<DashboardPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("MODELO - ${widget.name}")),
-      body: const SizedBox(
+      body: SizedBox(
         width: double.infinity,
         height: double.infinity,
         child: HtmlElementView(
-          viewType: 'iframeElement', // View type identifier
+          viewType: uniqueViewType, // Use unique view type for each dashboard
         ),
       ),
     );
