@@ -1,20 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ContactInfoCard extends StatelessWidget {
   const ContactInfoCard({super.key});
 
+  void _launchWhatsApp() async {
+    final Uri url = Uri.parse('https://wa.me/573156285506'); // Número con indicativo +57
+    if (!await launchUrl(url, mode: LaunchMode.externalApplication)) {
+      throw 'No se pudo abrir $url';
+    }
+  }
+
+  void _launchMore() async {
+    final Uri url = Uri.parse('https://v0-crear-un-folleto.vercel.app/'); // Número con indicativo +57
+    if (!await launchUrl(url, mode: LaunchMode.externalApplication)) {
+      throw 'No se pudo abrir $url';
+    }
+  }
+
+  
+
   @override
   Widget build(BuildContext context) {
-    return const Card(
+    return Card(
       elevation: 4,
-      margin: EdgeInsets.all(16),
+      margin: const EdgeInsets.all(16),
       child: Padding(
-        padding: EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text(
+            const Text(
               'DATA ANALYTICS SOLUTIONS',
               style: TextStyle(
                 fontSize: 24,
@@ -22,28 +39,32 @@ class ContactInfoCard extends StatelessWidget {
                 color: Colors.black,
               ),
             ),
-            SizedBox(height: 8), // Adds some space between texts
-            Text(
-              'Edilberto Rueda',
-              style: TextStyle(
-                fontSize: 20,
-                color: Colors.black87,
+            const SizedBox(height: 16),
+            ElevatedButton(
+              onPressed: _launchWhatsApp,
+              child: SizedBox(
+                width: 200,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.asset(
+                      'assets/images/wpp.png',
+                      height: 20,
+                    ),
+                    const SizedBox(width: 8),
+                    const Text('+573156285506'),
+                  ],
+                ),
               ),
             ),
-            Text(
-              'jerueda@yahoo.com',
-              style: TextStyle(
-                fontSize: 16,
-                color: Colors.black54,
+            const SizedBox(height: 8),
+            SizedBox(
+              width: 200,
+              child: ElevatedButton(
+                onPressed: _launchMore,
+                child: const Text('Conoce más...'),
               ),
-            ),
-            Text(
-              '3156285506',
-              style: TextStyle(
-                fontSize: 16,
-                color: Colors.black54,
-              ),
-            ),
+            ),            
           ],
         ),
       ),
