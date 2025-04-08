@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'dart:html' as html;
+
 
 class ContactInfoCard extends StatelessWidget {
   const ContactInfoCard({super.key});
 
   void _launchWhatsApp() {
-  final Uri url = Uri.parse('https://wa.me/573156285506');
-  launchUrl(url, mode: LaunchMode.platformDefault);
+  html.window.open('https://wa.me/573156285506', '_blank');
 }
 
 void _launchMore() {
-  final Uri url = Uri.parse('https://v0-crear-un-folleto.vercel.app/');
-  launchUrl(url, mode: LaunchMode.platformDefault);
+  html.window.open('https://v0-crear-un-folleto.vercel.app/', '_blank');
 }
+
 
 
   
