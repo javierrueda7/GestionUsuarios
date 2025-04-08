@@ -5,19 +5,16 @@ import 'package:url_launcher/url_launcher.dart';
 class ContactInfoCard extends StatelessWidget {
   const ContactInfoCard({super.key});
 
-  void _launchWhatsApp() async {
-    final Uri url = Uri.parse('https://wa.me/573156285506'); // Número con indicativo +57
-    if (!await launchUrl(url, mode: LaunchMode.externalApplication)) {
-      throw 'No se pudo abrir $url';
-    }
-  }
+  void _launchWhatsApp() {
+  final Uri url = Uri.parse('https://wa.me/573156285506');
+  launchUrl(url, mode: LaunchMode.platformDefault);
+}
 
-  void _launchMore() async {
-    final Uri url = Uri.parse('https://v0-crear-un-folleto.vercel.app/'); // Número con indicativo +57
-    if (!await launchUrl(url, mode: LaunchMode.externalApplication)) {
-      throw 'No se pudo abrir $url';
-    }
-  }
+void _launchMore() {
+  final Uri url = Uri.parse('https://v0-crear-un-folleto.vercel.app/');
+  launchUrl(url, mode: LaunchMode.platformDefault);
+}
+
 
   
 
